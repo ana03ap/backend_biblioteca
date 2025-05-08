@@ -1,0 +1,18 @@
+# Ignorar dependencias
+node_modules/
+
+# Ignorar variables de entorno
+.env
+
+# Ignorar logs
+logs/
+*.log
+
+# Ignorar sistema de OS
+.DS_Store
+
+# Ignorar archivos temporales de VSCode (si usas)
+.vscode/
+
+# Ignorar lockfile si no lo usas
+# package-lock.json

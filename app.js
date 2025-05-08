@@ -1,10 +1,11 @@
-require('dotenv').config();
+require("dotenv").config({ path: __dirname + '/.env' });
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const { errorHandler } = require('./utils/errorHandler'); // Importa el manejador de errores personalizado
+const { errorHandler } = require('./utils/errorHandler'); 
 const connectDB = require('./config/db');
 
 // Import routes
@@ -21,12 +22,12 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000', // Configuración más segura para CORS
+  origin: process.env.CLIENT_URL || 'http://localhost:3000', 
   credentials: true
 }));
 app.use(helmet());
-app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'combined')); // Más detallado en desarrollo
-app.use(express.json({ limit: '10kb' })); // Limita el tamaño del JSON para prevenir ataques
+app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'combined')); 
+app.use(express.json({ limit: '10kb' })); 
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -51,7 +52,7 @@ app.all('*', (req, res, next) => {
   });
 });
 
-// Error handling - Usa el manejador personalizado
+
 app.use(errorHandler);
 
 // Server
@@ -62,7 +63,7 @@ const server = app.listen(PORT, () => {
 
 // Manejo de errores no capturados
 process.on('unhandledRejection', (err) => {
-  console.error('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.error('UNHANDLED REJECTION! Shutting down...');
   console.error(err.name, err.message);
   server.close(() => {
     process.exit(1);
