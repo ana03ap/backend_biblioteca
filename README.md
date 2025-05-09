@@ -36,7 +36,7 @@ npm install
 npm run dev
 ```
 
-> ⚠️ Nota: La conexión a MongoDB se encuentra embebida directamente en `config/db.js` por problemas de entorno con `.env`.
+> ⚠️ Nota: En esta entrega, los valores de `JWT_SECRET` y `MONGO_URI` están embebidos directamente en el código fuente debido a problemas con la lectura del archivo `.env`.
 
 ---
 
